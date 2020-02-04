@@ -1,6 +1,4 @@
-{% extends 'blog/base.html' %}
 {% load static %}
-
 <html>
     <head>
         <title>World Worthy Travel Adventure</title>
@@ -10,22 +8,17 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
-    <body>
-      <div>
-    <h1><a href="/">World Worthy Travel Blog</a></h1>
-      </div>
-
-{% block content %}
-      {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                {{ post.published_date }}
+<body>
+    <div class="page-header">
+        <h1><a href="/">World Worthy Travel Blog</a></h1>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+            {% block content %}
+            {% endblock %}
             </div>
-            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
         </div>
-       {% endfor %}
-{% endblock %}
-
-    </body>
+    </div>
+</body>
 </html>
